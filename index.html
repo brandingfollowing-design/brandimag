@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f6fb">
+  <meta name="description" content="Онлайн-курс рисования для взрослых новичков. Начните рисовать с нуля за 2 месяца — шаг за шагом и с поддержкой преподавателя.">
+  <title>Рисовать можно — онлайн-курс для начинающих</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fbfaf8;
+      --ink: #29252f;
+      --muted: #706b75;
+      --lilac: #d9c9f1;
+      --lilac-deep: #7455a1;
+      --lilac-light: #f0eafa;
+      --coral: #df765d;
+      --line: #e9e5eb;
+      --green: #dce9dd;
+      --font: "Manrope", "Segoe UI", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.65; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow { margin: 0 0 14px; color: var(--lilac-deep); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.15; }
+    h2 { margin-bottom: 18px; font-size: clamp(32px, 4vw, 48px); font-weight: 600; letter-spacing: 0; }
+
+    .site-header { position: absolute; z-index: 2; inset: 0 0 auto; color: var(--ink); }
+    .nav { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-size: 14px; font-weight: 800; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--lilac); color: #493268; font-size: 17px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { text-decoration: none; font-size: 13px; font-weight: 700; }
+    .nav-links a:hover, .footer a:hover { color: var(--lilac-deep); }
+    .nav-cta, .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 23px; border: 0; border-radius: 3px; background: var(--lilac-deep); color: white; font-size: 14px; font-weight: 800; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+    .nav-cta:hover, .button:hover { transform: translateY(-2px); background: #604285; }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 3px; background: white; color: var(--ink); font-size: 22px; cursor: pointer; }
+
+    .hero { min-height: 760px; min-height: min(850px, 100svh); display: flex; align-items: center; position: relative; overflow: hidden; background: #e9e4e8 url("https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=2200&q=85") center 48% / cover no-repeat; }
+    .hero::before { position: absolute; inset: 0; content: ""; background: rgba(251, 250, 248, .79); }
+    .hero-content { position: relative; z-index: 1; padding-top: 68px; padding-bottom: 74px; }
+    .hero-copy { width: min(690px, 72%); }
+    .hero .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 2px; background: var(--lilac-light); }
+    .hero h1 { max-width: 670px; margin-bottom: 21px; font-size: clamp(48px, 7vw, 82px); font-weight: 600; letter-spacing: 0; }
+    .hero h1 span { color: var(--lilac-deep); }
+    .hero-copy > p:not(.eyebrow) { max-width: 515px; margin-bottom: 30px; color: #58525e; font-size: 18px; }
+    .hero-actions { display: flex; align-items: center; gap: 18px; }
+    .hero-note { color: var(--muted); font-size: 13px; }
+    .hero-note strong { display: block; color: var(--ink); font-size: 15px; }
+    .hero-stamp { position: absolute; right: 2%; bottom: 12%; width: 144px; aspect-ratio: 1; display: grid; place-items: center; padding: 20px; border: 1px solid rgba(41,37,47,.3); border-radius: 50%; color: #514557; font-size: 12px; line-height: 1.5; text-align: center; transform: rotate(9deg); }
+
+    section { padding: 108px 0; }
+    .intro-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 11%; align-items: start; }
+    .intro-grid h2 { max-width: 370px; }
+    .intro-copy { max-width: 630px; color: #5e5962; font-size: 17px; }
+    .intro-copy p:last-child { margin-bottom: 0; }
+    .intro-note { margin-top: 26px; padding-left: 18px; border-left: 3px solid var(--coral); color: var(--ink); font-size: 15px; font-weight: 700; }
+
+    .benefits { background: var(--lilac-light); }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 44px; }
+    .section-head h2 { margin-bottom: 0; }
+    .section-head > p { max-width: 325px; margin-bottom: 4px; color: var(--muted); font-size: 14px; }
+    .benefit-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(41,37,47,.2); }
+    .benefit { padding: 27px 26px 10px 0; }
+    .benefit + .benefit { padding-left: 26px; border-left: 1px solid rgba(41,37,47,.2); }
+    .benefit-number { color: var(--lilac-deep); font-size: 13px; font-weight: 800; }
+    .benefit h3 { margin: 23px 0 12px; font-size: 21px; font-weight: 700; }
+    .benefit p { max-width: 290px; margin-bottom: 0; color: #625c68; font-size: 14px; }
+    .benefit-icon { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.7); color: var(--lilac-deep); font-size: 21px; }
+
+    .audience-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 9%; align-items: start; }
+    .audience-grid > div:first-child > p:last-child { max-width: 340px; color: var(--muted); }
+    .audience-list { margin: 0; padding: 0; list-style: none; counter-reset: student; }
+    .audience-list li { display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: 14px; padding: 21px 0; border-top: 1px solid var(--line); font-size: clamp(18px, 2.2vw, 24px); font-weight: 600; }
+    .audience-list li::before { counter-increment: student; content: "0" counter(student); color: var(--coral); font-size: 12px; font-weight: 800; }
+    .audience-list li:last-child { border-bottom: 1px solid var(--line); }
+
+    .reviews { background: #f3f0ea; }
+    .reviews .section-head { align-items: center; }
+    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .review-card { min-height: 250px; display: flex; flex-direction: column; padding: 26px; background: var(--paper); }
+    .review-stars { color: var(--coral); font-size: 13px; letter-spacing: 2px; }
+    .review-card blockquote { flex: 1; margin: 20px 0 24px; color: #514b55; font-size: 15px; }
+    .review-person { display: flex; align-items: center; gap: 12px; }
+    .review-avatar { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: var(--green); color: #355441; font-size: 13px; font-weight: 800; }
+    .review-person strong { display: block; font-size: 13px; }
+    .review-person span { color: var(--muted); font-size: 11px; }
+
+    .teacher { padding-bottom: 116px; }
+    .teacher-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 10%; align-items: center; }
+    .teacher-photo { min-height: 440px; position: relative; background: var(--green); }
+    .teacher-photo img { width: 100%; height: 440px; object-fit: cover; object-position: center 38%; }
+    .photo-caption { position: absolute; right: -18px; bottom: 20px; padding: 12px 15px; background: var(--paper); color: #514b55; font-size: 11px; }
+    .teacher-copy h2 { margin-bottom: 8px; }
+    .teacher-name { margin-bottom: 24px; color: var(--lilac-deep); font-size: 14px; font-weight: 800; }
+    .teacher-copy > p:not(.eyebrow):not(.teacher-name) { max-width: 480px; color: #625c66; }
+    .teacher-facts { display: flex; gap: 36px; margin-top: 31px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .teacher-facts strong { display: block; font-size: 19px; }
+    .teacher-facts span { color: var(--muted); font-size: 12px; }
+
+    .signup { padding: 98px 0; background: #e5d8f4; }
+    .signup-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 10%; align-items: start; }
+    .signup-copy h2 { max-width: 400px; }
+    .signup-copy > p:not(.eyebrow) { max-width: 370px; color: #5e5665; }
+    .signup-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field-wide { grid-column: 1 / -1; }
+    .field label { font-size: 12px; font-weight: 800; }
+    .field input { width: 100%; height: 51px; padding: 0 14px; border: 1px solid rgba(41,37,47,.2); border-radius: 2px; outline: none; background: rgba(255,255,255,.83); color: var(--ink); }
+    .field input:focus { border-color: var(--lilac-deep); box-shadow: 0 0 0 3px rgba(116,85,161,.13); }
+    .form-submit { grid-column: 1 / -1; justify-self: start; margin-top: 4px; cursor: pointer; }
+    .form-privacy { grid-column: 1 / -1; margin: -7px 0 0; color: #625b68; font-size: 11px; }
+    .form-message { grid-column: 1 / -1; min-height: 24px; margin: 0; color: #355441; font-size: 13px; font-weight: 700; }
+
+    .footer { padding: 34px 0; background: #29252f; color: white; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer .brand-mark { background: var(--lilac); }
+    .footer p { margin: 0; color: #c5c0ca; font-size: 12px; }
+    .footer-contact { display: flex; align-items: center; gap: 22px; }
+    .footer a { color: white; font-size: 13px; text-decoration: none; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 560px); }
+      .nav { min-height: 72px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-links { position: absolute; top: 64px; left: 18px; right: 18px; display: none; align-items: stretch; gap: 0; padding: 8px 18px; background: var(--paper); box-shadow: 0 12px 28px rgba(41,37,47,.12); }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .nav-links a:last-child { border-bottom: 0; }
+      .nav-cta { display: none; }
+      .hero { min-height: 720px; min-height: min(790px, 100svh); background-position: 57% center; }
+      .hero::before { background: rgba(251,250,248,.84); }
+      .hero-content { padding-top: 78px; }
+      .hero-copy { width: 100%; }
+      .hero h1 { max-width: 560px; font-size: clamp(47px, 12vw, 68px); }
+      .hero-copy > p:not(.eyebrow) { max-width: 440px; font-size: 16px; }
+      .hero-stamp { right: 22px; bottom: 25px; width: 100px; padding: 12px; font-size: 10px; }
+      section { padding: 76px 0; }
+      .intro-grid, .audience-grid, .teacher-grid, .signup-grid { grid-template-columns: 1fr; gap: 30px; }
+      .intro-grid { gap: 10px; }
+      .intro-grid h2 { max-width: 500px; }
+      .section-head { align-items: start; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+      .benefit-list { grid-template-columns: 1fr; }
+      .benefit { display: grid; grid-template-columns: 46px 1fr; column-gap: 17px; padding: 22px 0; }
+      .benefit + .benefit { padding-left: 0; border-left: 0; border-top: 1px solid rgba(41,37,47,.2); }
+      .benefit-icon { grid-row: span 2; }
+      .benefit-number { align-self: center; }
+      .benefit h3 { margin: 9px 0 7px; }
+      .benefit p { grid-column: 2; }
+      .audience-grid { gap: 14px; }
+      .review-grid { grid-template-columns: 1fr; gap: 12px; }
+      .review-card { min-height: 0; }
+      .teacher-photo, .teacher-photo img { min-height: 360px; height: 360px; }
+      .signup { padding: 76px 0; }
+      .signup-grid { gap: 18px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 440px) {
+      .wrap { width: calc(100% - 32px); }
+      .hero h1 { font-size: 46px; }
+      .hero-actions { align-items: flex-start; flex-direction: column; gap: 13px; }
+      .hero-stamp { right: 17px; bottom: 19px; }
+      .signup-form { grid-template-columns: 1fr; }
+      .field-wide, .form-submit, .form-privacy, .form-message { grid-column: 1; }
+      .footer-contact { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .teacher-facts { gap: 23px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Основная навигация">
+      <a class="brand" href="#top" aria-label="Рисовать можно, на главную"><span class="brand-mark" aria-hidden="true">✳</span><span>Рисовать можно</span></a>
+      <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#course">О курсе</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#teacher">Преподаватель</a>
+      </div>
+      <a class="nav-cta" href="#signup">Записаться</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-content wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">Онлайн-курс для взрослых новичков</p>
+          <h1 id="hero-title">Научись рисовать <span>с нуля</span> за 2 месяца</h1>
+          <p>Без врождённого таланта и страха чистого листа. Понятные шаги, практика в своём темпе и преподаватель рядом.</p>
+          <div class="hero-actions">
+            <a class="button" href="#signup">Записаться</a>
+            <div class="hero-note"><strong>Стартуйте когда удобно</strong>Занятия остаются с вами</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stamp" aria-hidden="true">Меньше сомнений.<br>Больше рисунков.</div>
+    </section>
+
+    <section id="course">
+      <div class="intro-grid wrap">
+        <div>
+          <p class="eyebrow">Ваш первый шаг</p>
+          <h2>О курсе</h2>
+        </div>
+        <div class="intro-copy">
+          <p>За два месяца вы освоите основы рисунка и создадите работы, которыми захочется гордиться. Каждое занятие разбито на небольшие понятные шаги: сначала наблюдаем, потом пробуем и постепенно собираем целую картину.</p>
+          <p>Здесь не нужно успевать за кем-то или сразу делать идеально. Вы рисуете в удобном темпе, а преподаватель помогает разобраться, поддерживает и подсказывает, куда двигаться дальше.</p>
+          <p class="intro-note">Начать можно без опыта, дорогих материалов и специальной подготовки.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-labelledby="benefits-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Всё для уверенного старта</p><h2 id="benefits-title">Творчество в вашем ритме</h2></div>
+          <p>Учиться рисовать можно вписать в обычную жизнь — без гонки и расписания по минутам.</p>
+        </div>
+        <div class="benefit-list">
+          <article class="benefit">
+            <span class="benefit-icon" aria-hidden="true">◷</span><span class="benefit-number">01 / Гибкость</span>
+            <h3>Занимайтесь когда удобно</h3><p>Уроки доступны онлайн в любое время. Выбирайте свой ритм и возвращайтесь к материалам, когда захотите.</p>
+          </article>
+          <article class="benefit">
+            <span class="benefit-icon" aria-hidden="true">↗</span><span class="benefit-number">02 / Поддержка</span>
+            <h3>Обратная связь от преподавателя</h3><p>Получайте бережные комментарии к работам и конкретные подсказки для следующего шага.</p>
+          </article>
+          <article class="benefit">
+            <span class="benefit-icon" aria-hidden="true">✎</span><span class="benefit-number">03 / Практика</span>
+            <h3>Все материалы уже готовы</h3><p>К каждому занятию есть список материалов и наглядные примеры. Ничего не придётся искать самостоятельно.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="audience-title">
+      <div class="audience-grid wrap">
+        <div>
+          <p class="eyebrow">Можно начать с любой точки</p>
+          <h2 id="audience-title">Для кого этот курс</h2>
+          <p>Неважно, сколько раз вы начинали и что думаете о своих способностях. Важно только желание попробовать снова.</p>
+        </div>
+        <ol class="audience-list">
+          <li>Всегда хотел, но боялся начать</li>
+          <li>Пробовал сам, но забросил</li>
+          <li>Нужно рисовать для работы</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews" aria-labelledby="reviews-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">У каждого свой первый рисунок</p><h2 id="reviews-title">Отзывы учеников</h2></div>
+          <p>Имена и отзывы приведены как примеры оформления.</p>
+        </div>
+        <div class="review-grid">
+          <article class="review-card">
+            <div class="review-stars" aria-label="5 из 5">★★★★★</div>
+            <blockquote>«Я годами говорила, что не умею рисовать. А тут вдруг поняла: мне просто никто не объяснял с самого начала. Теперь рисую для себя почти каждый вечер».</blockquote>
+            <div class="review-person"><span class="review-avatar" aria-hidden="true">А</span><div><strong>Анна К.</strong><span>Начала с чистого листа</span></div></div>
+          </article>
+          <article class="review-card">
+            <div class="review-stars" aria-label="5 из 5">★★★★★</div>
+            <blockquote>«Очень помогло, что можно пересматривать уроки и не торопиться. Преподаватель объясняет спокойно, а обратная связь помогает не бросить на полпути».</blockquote>
+            <div class="review-person"><span class="review-avatar" aria-hidden="true">М</span><div><strong>Михаил Р.</strong><span>Вернулся к давней мечте</span></div></div>
+          </article>
+          <article class="review-card">
+            <div class="review-stars" aria-label="5 из 5">★★★★★</div>
+            <blockquote>«Пришла за скетчами для работы, а осталась потому, что это оказалось удивительно расслабляющим. Заодно перестала бояться ошибок».</blockquote>
+            <div class="review-person"><span class="review-avatar" aria-hidden="true">Е</span><div><strong>Елена С.</strong><span>Рисует для работы и души</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="teacher" id="teacher" aria-labelledby="teacher-title">
+      <div class="teacher-grid wrap">
+        <div class="teacher-photo">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=85" alt="Портрет преподавателя курса">
+          <span class="photo-caption">Фото преподавателя</span>
+        </div>
+        <div class="teacher-copy">
+          <p class="eyebrow">Давайте знакомиться</p>
+          <h2 id="teacher-title">О преподавателе</h2>
+          <p class="teacher-name">Мария Лебедева · художник и педагог</p>
+          <p>Я помогаю взрослым ученикам увидеть, что рисунок — не магический дар, а навык, который можно освоить. В работе для меня важны любопытство, ясные объяснения и право на несовершенный первый набросок.</p>
+          <p>На занятиях мы не сравниваем работы и не ищем ошибки ради ошибок. Вместо этого замечаем, что уже получилось, и находим следующий посильный шаг.</p>
+          <div class="teacher-facts"><div><strong>8 лет</strong><span>преподаю рисунок</span></div><div><strong>700+</strong><span>учеников начали с нуля</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="signup" id="signup" aria-labelledby="signup-title">
+      <div class="signup-grid wrap">
+        <div class="signup-copy">
+          <p class="eyebrow">Первый шаг — самый важный</p>
+          <h2 id="signup-title">Давайте начнём рисовать</h2>
+          <p>Оставьте контакты — расскажем о программе и поможем выбрать удобный старт.</p>
+        </div>
+        <form class="signup-form" id="signup-form">
+          <div class="field field-wide"><label for="name">Ваше имя</label><input id="name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+          <div class="field"><label for="phone">Телефон</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required></div>
+          <button class="button form-submit" type="submit">Записаться</button>
+          <p class="form-privacy">Нажимая кнопку, вы соглашаетесь на связь по указанным контактам.</p>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner wrap">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">✳</span><span>Рисовать можно</span></a>
+      <p>© 2026 · Онлайн-курс рисования</p>
+      <div class="footer-contact"><a href="mailto:hello@risovat-mozhno.ru">hello@risovat-mozhno.ru</a><a href="tel:+79991234567">+7 (999) 123-45-67</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Открыть меню' : 'Закрыть меню');
+      navLinks.classList.toggle('is-open', !isOpen);
+    });
+
+    navLinks.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        navLinks.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Открыть меню');
+      }
+    });
+
+    document.querySelector('#signup-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const name = form.elements.name.value.trim();
+      document.querySelector('#form-message').textContent = `Спасибо, ${name}! Форма готова, но для реальной записи её нужно подключить к сервису обработки заявок.`;
+      form.reset();
+    });
+  </script>
+</body>
+</html>
